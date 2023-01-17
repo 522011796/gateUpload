@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>灯参数修改</title>
+    <style>
+        html {
+            word-spacing: 1px;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-sizing: border-box;
+            overflow-y: hidden;
+            /*min-width: 1200px*/
+        }
+        body{
+            overflow-y: hidden;
+            background: #FFFFFF;
+        }
+        .title-class{
+            font-size: 30px;
+            font-weight: bold;
+            width: 100%;
+            margin: 0 auto;
+            height: 50px;
+            line-height: 50px;
+        }
+        .h-line{
+            height: 1px;
+            width: 100%;
+            border-bottom: 1px dashed #dddddd;
+            margin: 5px 0px;
+        }
+        .content-class{
+            margin-top: 40px;
+        }
+        .content-list-block-class{
+            border-radius: 5px;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            padding:10px 0px;
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 5px;
+            /*border: 0.15rem dashed #dddddd;*/
+            /*border-bottom: 0.12rem dashed #dddddd;*/
+        }
+        .content-block-class{
+            background: #f8f8f8;
+            border-radius: 5px;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            padding:15px 0px;
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 40px;
+            /*border: 0.15rem dashed #dddddd;*/
+            border-top: 0.5rem dashed #dddddd;
+        }
+        .info-block-class{
+            background: #f8f8f8;
+            border-radius: 5px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+            padding:0px 0px;
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+        .pull-left{
+            float: left;
+        }
+        .pull-right{
+            float: right;
+        }
+        .clearFix{
+            clear: both;
+        }
+        .textCenter{
+            text-align: center;
+        }
+        .textLeft{
+            text-align: left;
+        }
+        .textRight{
+            text-align: right;
+        }
+        .color-555{
+            color:#555555
+        }
+        .color-888{
+            color:#888888
+        }
+        .color-999{
+            color:#999999
+        }
+        .color-red{
+            color:#f00
+        }
+        .color-green{
+            color:#67C23A;
+        }
+        .color-warning{
+            color:#E6A23C;
+        }
+        .bg-f5{
+            background: #f5f5f5;
+        }
+        .bg-green{
+            background: rgb(225, 245, 216);
+        }
+        .custom-button { /* 按钮美化 */
+            /*width: 270px; !* 宽度 *!*/
+            height: 35px; /* 高度 */
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 2px; /* 边框半径 */
+            background: #1E90FF; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: white; /* 字体颜色 */
+            font-size: 12px; /* 字体大小 */
+            padding:3px 10px;
+            width: 100%;
+        }
+        .custom-button:hover { /* 鼠标移入按钮范围时改变颜色 */
+            /*background: #5599FF;*/
+        }
+        .custom-button:active {
+            /*background: #ffffff;*/
+        }
+        .custom-success-button { /* 按钮美化 */
+            /*width: 270px; !* 宽度 *!*/
+            height: 35px; /* 高度 */
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 2px; /* 边框半径 */
+            background: #1E90FF; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: white; /* 字体颜色 */
+            font-size: 12px; /* 字体大小 */
+            padding:0px 6px;
+        }
+        .custom-normal-button { /* 按钮美化 */
+            /*width: 270px; !* 宽度 *!*/
+            height: 35px; /* 高度 */
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 2px; /* 边框半径 */
+            background: #E6A23C; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: white; /* 字体颜色 */
+            font-size: 12px; /* 字体大小 */
+            padding:0px 6px;
+        }
+        .custom-refersh-button{
+            /*width: 270px; !* 宽度 *!*/
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 2px; /* 边框半径 */
+            background: #E6A23C; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: white; /* 字体颜色 */
+            font-size: 12px; /* 字体大小 */
+            padding:2px 5px;
+        }
+        .custom-disabled-button{
+            /*width: 270px; !* 宽度 *!*/
+            height: 35px; /* 高度 */
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 2px; /* 边框半径 */
+            background: #dddddd; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: #888; /* 字体颜色 */
+            font-size: 12px; /* 字体大小 */
+            padding:0px 6px;
+        }
+        .marginTop2{
+            margin-top: 2px;
+        }
+        .marginTop5{
+            margin-top: 5px;
+        }
+        .marginTop10{
+            margin-top: 10px;
+        }
+        .marginTop20{
+            margin-top: 20px;
+        }
+        .marginLeft5{
+            margin-left: 5px;
+        }
+        .marginLeft20{
+            margin-left: 20px;
+        }
+        .marginLeft10{
+            margin-left: 10px;
+        }
+        .padding-lr-10{
+            padding: 0px 10px;
+        }
+        .padding-tb-10{
+            padding: 10px 0px;
+        }
+        .padding-full-1rem{
+            padding: 10px 10px;
+        }
+        .font-bold{
+            font-weight: bold;
+        }
+        .font-size12{
+            font-size: 12px;
+        }
+        .font-size14{
+            font-size: 14px;
+        }
+        .font-size16{
+            font-size: 16px;
+        }
+        .font-sizeMinirem3{
+            font-size: 12px;
+        }
+        .font-sizeMinirem2{
+            font-size: 12px;
+        }
+        .font-sizeMinirem{
+            font-size: 12px;
+        }
+        .font-sizeSmallrem{
+            font-size: 12px;
+        }
+        .width80P{
+            width: 95%;
+        }
+        label{
+            position: relative;
+        }
+        #file{
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+        #btn{
+            margin-right: 5px;
+            background: cornflowerblue;
+            border: 0px;
+            color: #ffffff;
+            font-size: 0.5rem;
+            padding: 5px 10px;
+            border-radius:  5px;
+        }
+        #text{
+            color: black;
+        }
+        .input-class{
+            position: relative;
+            top: 0px;
+            width: 100px;
+            height: 25px;
+            border: 1px solid #cccccc;
+            border-radius: 2px;
+            color: #666666;
+        }
+        .toast-class{
+            position: absolute;
+            background: rgba(0,0,0,1);
+            width: 7rem;
+            padding: 1rem 1.2rem;
+            top:25%;
+            left:50%;
+            margin-left:-3.5rem;
+            z-index: 99;
+            display: none;
+        }
+        .loading-class{
+            position: absolute;
+            background: rgba(0,0,0,0.05);
+            top:0%;
+            left:0%;
+            z-index: 99;
+            height: 100%;
+            width: 100%;
+            display: none;
+        }
+        .loading__anim {
+            width: 35px;
+            height: 35px;
+            display: inline-block;
+            border: 5px solid rgba(189,189,189 ,0.25);
+            border-left-color: rgba(3,155,229 ,1);
+            border-top-color: rgba(3,155,229 ,1);
+            border-radius: 50%;
+            animation: rotate 1000ms infinite linear;
+        }
+        .returnBtn{
+            background: none;
+            border: none;
+            padding: 5px 5px;
+            width: 60px;
+            font-weight: bold;
+            color: #999;
+            font-size: 15px;
+        }
+        a{
+            color: #1E90FF;
+            text-decoration: none;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+            -webkit-user-select: none;
+            -moz-user-focus: none;
+            -moz-user-select: none;
+        }
+        a:active{
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+            -webkit-user-select: none;
+            -moz-user-focus: none;
+            -moz-user-select: none;
+        }
+        .to_bottom {
+            width: 0;
+            height: 0;
+            border-top: 5px solid #ccc;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            position: relative;
+            top: 12px;
+            left: 5px;
+        }
+        .to_top {
+            width: 0;
+            height: 0;
+            border-bottom: 5px solid #ccc;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            position: relative;
+            top: -10px;
+            left: 5px;
+        }
+        @keyframes rotate {
+            to {  transform: rotate(1turn) }
+        }
+    </style>
+    <script type="text/javascript">
+        var timer = null;
+        var num = 0;
+        var htmlStr = "";
+        var dataDevice = [];
+        var diffDeviceNum = 0;
+        var toogleStatus = false
+        onload = function () {
+            clearInterval(timer);
+            loopScan();
+            document.getElementById("updateAllConfig").style.background = "#cccccc";
+            document.getElementById("updateAllConfig").disabled = true;
+            //test();
+        }
+
+        function loopScan(){
+            clearInterval(timer);
+            showLoading();
+            getDeviceListScan();
+        }
+
+        function loopManu(sn){
+            clearInterval(timer);
+            showLoading();
+            clearInterval(timer);
+            diffDeviceNum = 0;
+            document.getElementById("contentList").innerHTML = "";
+            document.getElementById("totalDevice").innerText = "0";
+            document.getElementById("diffDevice").innerText = "0";
+            timer = setInterval(function (){
+                getDeviceList();
+            },1000);
+        }
+
+        function getDeviceListScan(){
+            var url =  "/devices_scan";
+            var xhr = new XMLHttpRequest();  // XMLHttpRequest 对象
+            xhr.open("post", url, true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。
+            var form = new FormData(); // FormData 对象
+            form.append("devType", 1);
+            // xhr.onreadystatechange = function() {//Call a function when the state changes.
+            //     if (xhr.readyState == 4 && xhr.status == 200) {
+            //         //var data = JSON.parse(xhr.responseText);
+            //         console.log("scan");
+            //         timer = setInterval(function (){
+            //             getDeviceList();
+            //         },1000);
+            //     }else {
+            //         hideLoading();
+            //     }
+            // }
+
+            xhr.send(form);
+
+            console.log("scan");
+            //clearInterval(timer);
+            diffDeviceNum = 0;
+            document.getElementById("contentList").innerHTML = "";
+            document.getElementById("totalDevice").innerText = "0";
+            document.getElementById("diffDevice").innerText = "0";
+            timer = setInterval(function (){
+                getDeviceList();
+            },1000);
+        }
+
+        function getDeviceListManu(sn){
+            var url =  "/devices_get_manu_params";
+            var xhr = new XMLHttpRequest();  // XMLHttpRequest 对象
+            xhr.open("post", url, true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。
+            var form = new FormData(); // FormData 对象
+            if (sn){
+                form.append("sn", sn);
+            }
+            // xhr.onreadystatechange = function() {//Call a function when the state changes.
+            //     if (xhr.readyState == 4 && xhr.status == 200) {
+            //         //var data = JSON.parse(xhr.responseText);
+            //         timer = setInterval(function (){
+            //             getDeviceList();
+            //         },1000);
+            //     }else {
+            //         hideLoading();
+            //     }
+            // }
+
+            xhr.send(form);
+
+            clearInterval(timer);
+            timer = setInterval(function (){
+                getDeviceList();
+            },1000);
+        }
+
+        function getDeviceList(){
+            // if (num > 6){
+            //     clearInterval(timer);
+            //     num = 0;
+            //     hideLoading();
+            // }
+            var maxElectric = document.getElementById("maxElectric");
+            var contentList = document.getElementById("contentList");
+            var totalDevice = document.getElementById("totalDevice");
+            var type = getTypeRadio();
+            contentList.style.height = window.screen.height - 300 + "px";
+            //console.log(window.screen.height);
+
+            var url =  "/devices_list";
+            var xhr = new XMLHttpRequest(); // XMLHttpRequest 对象
+            var params = '';
+            xhr.open("get", url, true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。
+            xhr.onerror =  uploadFailed; //请求失败
+            console.log("循环中....");
+            xhr.onreadystatechange = function() {//Call a function when the state changes.
+                console.log("state--"+ xhr.readyState, xhr.status);
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    console.log(data);
+                    htmlStr = "";
+                    if(data.state == 1) {
+                        clearInterval(timer);
+                        num = 0;
+                        hideLoading();
+                        document.getElementById("refershBtn").disabled = false;
+                        document.getElementById("refershBtn").style.background = "#E6A23C";
+                        if (data.devices && data.devices.length > 0){
+                            dataDevice = data.devices;
+                            totalDevice.innerText = data.devices.length;
+                            totalDiffDeviceCount(data.devices);
+                            htmlContentList(data.devices);
+                        }
+                    }else {
+                        if (data.devices && data.devices.length > 0){
+                            dataDevice = data.devices;
+                            totalDevice.innerText = data.devices.length;
+                            htmlContentList(data.devices);
+                        }
+                    }
+                }
+            }
+            xhr.send();
+            num++;
+        }
+
+        function configLight(type, sn) {
+            //document.getElementById("errorTips").innerText = "";
+            var r = null;
+            var tips = "";
+            var subType = getSubTypeCheckbox();
+            var maxElectric =document.getElementById("maxElectric");
+            var typeModel = getTypeRadio();
+            var subTypeStr = subType.join();
+            // if (subType.length == 0){
+            //     toast("请选择需要提交的数据方式");
+            //     return;
+            // }
+            if (type == "all"){
+                tips = "确定需要修改全部设备的参数？";
+            }else {
+                tips = "确定需要修改设备["+sn+"]的参数？";
+            }
+            r = confirm(tips);
+            if (r == false) {
+                return;
+            }else {
+                if (subTypeStr.indexOf("dianliu") > -1 && maxElectric.value == ""){
+                    toast("请输入最大电流值");
+                    return;
+                }
+            }
+
+            var url =  "/devices_modify"; // 接收上传文件的后台地址
+            var form = new FormData(); // FormData 对象
+            var dataObj = {};
+            dataObj = getSubParams(maxElectric, typeModel, sn);
+            console.log(JSON.stringify(dataObj));
+            form.append('arg',JSON.stringify(dataObj))
+
+            var xhr = new XMLHttpRequest();  // XMLHttpRequest 对象
+            xhr.open("post", url, true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。
+            xhr.onerror =  uploadFailed; //请求失败
+
+            xhr.onreadystatechange = function() {//Call a function when the state changes.
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    console.log(data);
+                    if (data.state == 0){
+                        loopManu(sn);
+                        toast("修改成功！");
+                    }else if (data.state == 2){
+                        loopManu(sn);
+                        toast("批量修改中，请稍后查看设备列表信息");
+                    }else {
+                        toast("修改失败，请稍后再试！");
+                    }
+                }
+            }
+
+            xhr.send(form); //开始上传，发送form数据
+        }
+
+        //取消
+        function cancleUploadFile(){
+            xhr.abort();
+        }
+
+        function uploadFailed(evt,state, desc) {
+            console.log("请求接口错误");
+            clearInterval(timer);
+            timer = null;
+            document.getElementById("refershBtn").disabled = false;
+            document.getElementById("refershBtn").style.background = "#E6A23C";
+            hideLoading();
+        }
+
+        function getTypeRadio(){
+            var typeRadio = document.getElementsByName("model");
+            var type = "冷暖调光";
+            for (var i = 0; i < typeRadio.length; i++) { //遍历Radio
+                if (typeRadio[i].checked) {
+                    type = typeRadio[i].value;
+                }
+            }
+            return type;
+        }
+
+        function getSubTypeCheckbox(){
+            var typeRadio = document.getElementsByName("subType");
+            var type = [];
+            for (var i = 0; i < typeRadio.length; i++) { //遍历Radio
+                if (typeRadio[i].checked) {
+                    type.push(typeRadio[i].value);
+                }
+            }
+            return type;
+        }
+
+        function getSubParams(maxElectric,typeModel,sn){
+            var dataObj = {
+                'params': {}
+            };
+            var subType = getSubTypeCheckbox();
+            var subTypeStr = subType.join();
+            if (subTypeStr.indexOf("dianliu") > -1){
+                dataObj['params']['缺省选择最大电流'] = parseInt(maxElectric.value);
+            }
+            if (subTypeStr.indexOf("moxing") > -1){
+                dataObj['params']['灯光模型'] = typeModel;
+            }
+            if (sn){
+                dataObj['sn'] = sn;
+            }
+            return dataObj;
+        }
+
+        function searchBtn(sn){
+            console.log(sn);
+            var url =  "/device_identify"; // 接收上传文件的后台地址
+            var form = new FormData(); // FormData 对象
+            form.append("sn", sn);
+
+            var xhr = new XMLHttpRequest();  // XMLHttpRequest 对象
+            xhr.open("post", url, true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。
+
+            xhr.send(form); //开始上传，发送form数据
+        }
+
+        function updateBtn(sn){
+            configLight(null,sn);
+        }
+
+        function refreshBtn(){
+            document.getElementById("refershBtn").disabled = true;
+            document.getElementById("refershBtn").style.background = "#cccccc";
+            loopScan();
+        }
+
+        function toast(toast){
+            var toastId = document.getElementById("toastId");
+            document.getElementById("toastStrId").innerText = toast;
+            toastId.style.display = "block";
+            setTimeout(function (){
+                toastId.style.display = "none";
+                document.getElementById("toastStrId").innerText = "";
+            },1800);
+        }
+
+
+        function showLoading(){
+            var loadId = document.getElementById("loadId");
+            loadId.style.display = "block";
+        }
+
+        function hideLoading(){
+            var loadId = document.getElementById("loadId");
+            loadId.style.display = "none";
+        }
+
+        function inputChange(event){
+            diffDeviceNum = 0;
+            totalDiffDeviceCount(dataDevice);
+            htmlContentList(dataDevice);
+        }
+
+        function changeRadioType(type){
+            var typeRadio = document.getElementsByName("model");
+            for (var i = 0; i < typeRadio.length; i++) { //遍历Radio
+                typeRadio[i].disabled = type;
+            }
+        }
+
+        function checkboxChange(){
+            var subType = getSubTypeCheckbox();
+            var subTypeStr = subType.join();
+            document.getElementById("updateAllConfig").style.background = "#cccccc";
+            document.getElementById("updateAllConfig").disabled = true;
+            document.getElementById("maxElectric").disabled = true;
+            changeRadioType(true);
+
+            if (subTypeStr.indexOf("dianliu") > -1){
+                document.getElementById("maxElectric").disabled = false;
+                document.getElementById("updateAllConfig").style.background = "#1E90FF";
+                document.getElementById("updateAllConfig").disabled = false;
+            }
+            if (subTypeStr.indexOf("moxing") > -1){
+                changeRadioType(false);
+                document.getElementById("updateAllConfig").style.background = "#1E90FF";
+                document.getElementById("updateAllConfig").disabled = false;
+            }
+        }
+
+        function totalDiffDeviceCount(data){
+            var diffDevice = document.getElementById("diffDevice");
+            var maxElectric =document.getElementById("maxElectric");
+            var type = getTypeRadio();
+            diffDeviceNum = 0;
+            diffDevice.innerText = "0";
+            for(var i = 0; i < data.length; i++){
+                if (data[i]['params']){
+                    if (maxElectric.value == data[i]['params']['缺省选择最大电流'] && type == data[i]['params']['灯光模型']){
+
+                    }else {
+                        diffDeviceNum++;
+                    }
+                }else {
+                    diffDeviceNum++;
+                }
+            }
+            diffDevice.innerText = diffDeviceNum;
+        }
+
+        function htmlContentList(data){
+            var html = "";
+            htmlStr = "";
+            var diffDevice = document.getElementById("diffDevice");
+            var contentList = document.getElementById("contentList");
+            var maxElectric = document.getElementById("maxElectric");
+            var type = getTypeRadio();
+            for(var i = 0; i < data.length; i++){
+                html = '<div class="content-class content-list-block-class width80P bg-f5" style="position: relative;margin-bottom: 10px">';
+                html += '       <div style="margin: 0px 10px;width: 70%" class="pull-left">';
+                html += '           <div style="position: relative">';
+                html += '               <div>';
+                html += '                   <span class="color-555 font-sizeMinirem">'+data[i]['sn']+'</span>';
+                html += '               </div>';
+                html += '           </div>';
+                if (data[i]['params']){
+                    if (maxElectric.value == data[i]['params']['缺省选择最大电流'] && type == data[i]['params']['灯光模型']){
+                        html += '           <div class="color-green font-sizeMinirem2">';
+                        html += '               <span>'+data[i]['params']['缺省选择最大电流']+'</span>毫安';
+                        html += '               |';
+                        html += '               <span>'+data[i]['params']['灯光模型']+'</span>';
+                        html += '           </div>';
+                    }else {
+                        html += '           <div class="color-red font-sizeMinirem2">';
+                        html += '               <span>'+data[i]['params']['缺省选择最大电流']+'</span>毫安';
+                        html += '               |';
+                        html += '               <span>'+data[i]['params']['灯光模型']+'</span>';
+                        html += '           </div>';
+                    }
+                }else {
+                    html += '           <div class="color-warning font-sizeMinirem2">';
+                    html += '               <span>暂未获取到设备参数</span>';
+                    html += '           </div>';
+                }
+
+                html += '       </div>';
+                html += '       <div style="margin-left: 70%; text-align: center;position: relative">';
+                html += '           <div style="position: relative; top: 5px">';
+                if (data[i]['params']) {
+                    html += '               <button type="button" class="custom-normal-button" onclick="searchBtn(\'' + data[i]["sn"] + '\')">查找</button>';
+
+                    if (maxElectric.value == data[i]['params']['缺省选择最大电流'] && type == data[i]['params']['灯光模型']) {
+                        html += '               <button id="updateBtn" type="button" class="custom-disabled-button">修改</button>';
+                    } else {
+                        html += '               <button id="updateBtn" type="button" class="custom-success-button" onclick="updateBtn(\'' + data[i]["sn"] + '\')">修改</button>';
+                    }
+                }else {
+                    html += '';
+                }
+
+                html += '           </div>';
+                html += '       </div>';
+                html += '       <div class="clearFix"></div>';
+                html += '   </div>';
+
+                htmlStr += html;
+            }
+            contentList.innerHTML = htmlStr;
+        }
+
+        function test(){
+            htmlStr = "";
+            var diffDevice = document.getElementById("diffDevice");
+            var contentList = document.getElementById("contentList");
+            var maxElectric = document.getElementById("maxElectric");
+            var html = "";
+            for(var i = 0; i < 20; i++){
+                html = '<div class="content-class content-list-block-class width80P bg-f5" style="position: relative;margin-bottom: 10px">';
+                html += '       <div style="margin: 0px 10px;width: 60%" class="pull-left">';
+                html += '           <div style="position: relative">';
+                html += '               <div>';
+                html += '                   <span class="color-555 font-sizeMinirem">'+i+'</span>';
+                html += '               </div>';
+                html += '           </div>';
+
+                if (maxElectric.value == 150){
+                    html += '           <div class="color-green font-sizeMinirem2">';
+                    html += '               <span>'+i+'</span>毫安';
+                    html += '               |';
+                    html += '               <span>'+i+'</span>';
+                    html += '           </div>';
+                }else {
+                    diffDeviceNum++;
+                    html += '           <div class="color-red font-sizeMinirem2">';
+                    html += '               <span>'+i+'</span>毫安';
+                    html += '               |';
+                    html += '               <span>'+i+'</span>';
+                    html += '           </div>';
+                }
+
+                html += '       </div>';
+                html += '       <div style="margin-left: 60%; text-align: center;position: relative">';
+                html += '           <div style="position: relative; top: 5px">';
+                html += '               <button type="button" class="custom-normal-button" onclick="searchBtn(\'' + i + '\')">查找</button>';
+                if (maxElectric.value == 150){
+                    html += '               <button id="updateBtn" type="button" class="custom-disabled-button">修改</button>';
+                }else {
+                    html += '               <button id="updateBtn" type="button" class="custom-success-button" onclick="updateBtn(\'' + i + '\')">修改</button>';
+                }
+                html += '           </div>';
+                html += '       </div>';
+                html += '       <div class="clearFix"></div>';
+                html += '   </div>';
+
+                htmlStr += html;
+            }
+            diffDevice.innerText = diffDeviceNum;
+            contentList.innerHTML = htmlStr;
+
+            contentList.style.height = window.screen.height - 300 + "px";
+            //console.log(window.screen.height);
+        }
+
+        function returnPage(){
+            window.location.href = "index.html";
+        }
+
+        function toogle(type){
+            var toogleFalse = document.getElementById("toogleFalseId");
+            var toogleTrue = document.getElementById("toogleTrueId");
+            var toogleShowId = document.getElementById("toogleShowId");
+            var toogleShowBtnId = document.getElementById("toogleShowBtnId");
+            var contentList = document.getElementById("contentList");
+
+            if (type == false){
+                contentList.style.height = window.screen.height - 130 + "px";
+                toogleShowId.style.display = type == false ? "none" : "inline";
+                toogleShowBtnId.style.display = type == false ? "none" : "inline";
+                toogleFalse.style.display = "none";
+                toogleTrue.style.display = "inline";
+            }else if (type == true){
+                contentList.style.height = window.screen.height - 300 + "px";
+                toogleShowId.style.display = type == false ? "none" : "inline";
+                toogleShowBtnId.style.display = type == false ? "none" : "inline";
+                toogleFalse.style.display = "inline";
+                toogleTrue.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="toast-class" id="toastId">
+        <div style="width: 100%;text-align: center;color: #ffffff;font-size: 12px">
+            <span id="toastStrId"></span>
+        </div>
+    </div>
+
+    <div class="loading-class" id="loadId">
+        <div style="width: 100%;position: relative;text-align: center;color: #67C23A;font-size: 18px;font-weight: bold;top: 50%">
+            <div class="loading__anim"></div>
+            <div>loading...</div>
+        </div>
+    </div>
+
+    <div>
+        <div class="title-class">
+            <div id="backId" class="pull-left" style="width: 15%;font-size: 14px;cursor: default;text-align: left;height: 100%">
+                <button type="button" class="color-555 returnBtn" id="returnId" onclick="returnPage()">
+                     &lt;返回
+                </button>
+                <span>&nbsp;</span>
+            </div>
+            <div class="pull-left textCenter" style="width: 70%">
+                <span>灯参数修改</span>
+            </div>
+            <div class="pull-left" style="width: 15%">
+                <span>&nbsp;</span>
+            </div>
+            <div class="clearFix"></div>
+        </div>
+
+        <div style="margin-top: 10px;" id="headerId">
+            <div class="width80P" style="margin: 0 auto;">
+                <div class="color-555 font-sizeMinirem font-bold">
+                    <span>参数设置</span>
+                    <span style="position: relative">
+                        <a href="javascript:;" id="toogleFalseId" onclick="toogle(false)" style="display: inline;width: 50px"> 折叠设置</a>
+                        <a href="javascript:;" id="toogleTrueId" onclick="toogle(true)" style="display: none;width: 50px"> 展开设置</a>
+                    </span>
+                </div>
+                <div class="font-sizeMinirem info-block-class" id="toogleShowId">
+                    <div class="padding-full-1rem">
+<!--                        <div>-->
+<!--                            <span class="color-555">提交数据类型</span>-->
+<!--                            <span class="color-888">-->
+<!--                                <label for="dianliu">-->
+<!--                                    <input type="checkbox" id="dianliu" name="subType" value="dianliu"  style="zoom:1.4;position: relative; top: 4px">最大电流-->
+<!--                                </label>-->
+<!--                                <label for="moxing">-->
+<!--                                    <input type="checkbox" id="moxing" name="subType" value="moxing"  style="zoom:1.4;position: relative; top: 4px">灯光模型-->
+<!--                                </label>-->
+<!--                            </span>-->
+<!--                        </div>-->
+                        <div>
+                            <div>
+                                <div>
+                                    <label for="maxDianliu">
+                                        <input type="checkbox" id="maxDianliu" name="subType" value="dianliu"  style="zoom:1.3;position: relative; top: 4px" onchange="checkboxChange()">
+                                        <span class="color-555">缺省最大电流</span>
+                                    </label>
+                                    <span>
+                                        <input type="text" id="maxElectric" name="maxElectric" value="150" class="input-class" disabled onchange="inputChange()" oninput="inputChange()" onporpertychange="inputChange()">
+                                        <label class="color-999">毫安</label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="marginTop10">
+                            <div>
+                                <label for="dengmoxing">
+                                    <input type="checkbox" id="dengmoxing" name="subType" value="moxing"  style="zoom:1.3;position: relative; top: 4px" onchange="checkboxChange()">
+                                    <span class="color-555">灯光模型</span>
+                                </label>
+                            </div>
+                            <div class="marginTop5">
+                                <div class="color-999">
+                                    <label for="noneId">
+                                        <input type="radio" id="noneId" name="model" value="无模型调光" disabled style="zoom:1.4;position: relative; top: 4px" checked onchange="inputChange()">无模型调光
+                                    </label>
+                                    <label for="onlyId" class="marginLeft20">
+                                        <input type="radio" id="onlyId" name="model" value="单路调光" disabled style="zoom:1.4;position: relative; top: 4px" onchange="inputChange()">单路调光
+                                    </label>
+                                    <label for="coolId" class="marginLeft20">
+                                        <input type="radio" id="coolId" name="model" value="冷暖调光" disabled checked style="zoom:1.4;position: relative; top: 4px" onchange="inputChange()">冷暖调光
+                                    </label>
+                                </div>
+                                <div class="color-999">
+                                    <label for="rgbId">
+                                        <input type="radio" id="rgbId" name="model" value="RGB调光" disabled style="zoom:1.4;position: relative; top: 4px" onchange="inputChange()">RGB调光
+                                    </label>
+                                    <label for="coolOrRgb" class="marginLeft20">
+                                        <input type="radio" id="coolOrRgb" name="model" value="冷暖或RGB调光" disabled style="zoom:1.4;position: relative; top: 4px" onchange="inputChange()">冷暖或RGB调光
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="marginTop20" id="toogleShowBtnId">
+                    <button id="updateAllConfig" type="button" disabled onclick="configLight('all', null)" class="custom-button">全部修改</button>
+                    <div class="marginTop2">
+                        <span class="color-red font-size12">如需单独修改某一设备参数，请点击列表中的"修改"按钮</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="h-line"></div>
+
+        <div style="margin-top: 10px;">
+            <div class="width80P" style="margin: 0 auto;">
+                <div class="color-555 font-sizeMinirem font-bold">
+                    <span>设备列表</span>
+                    <span class="marginLeft5 color-888">共</span>
+                    <span class="color-red" id="diffDevice">0</span>
+                    /
+                    <span class="color-888" id="totalDevice">0</span>
+                    <span class="color-888">台</span>
+
+                    <span class="marginLeft10">
+                        <button id="refershBtn" type="button" onclick="refreshBtn()" class="custom-refersh-button">刷新</button>
+                    </span>
+                </div>
+            </div>
+
+            <div id="contentList" style="overflow-y: auto;">
+<!--                <div class="content-class content-list-block-class width80P" style="position: relative;margin-bottom: 20px">-->
+<!--                    <div style="margin: 0px 10px;width: 70%" class="pull-left">-->
+<!--                        <div style="position: relative">-->
+<!--                            <div>-->
+<!--                                <span id="listTitle" class="color-555 font-sizeMinirem">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="color-888 font-sizeMinirem2">-->
+<!--                            <span>xxxxxxx</span>-->
+<!--                            |-->
+<!--                            <span>xxxxxxx</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div style="margin-left: 70%; text-align: center;position: relative">-->
+<!--                        <div style="position: relative; top: 20px">-->
+<!--                            <button id="searchBtn" type="button" class="custom-normal-button">查找</button>-->
+<!--                            <button id="updateBtn" type="button" class="custom-success-button">修改</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="clearFix"></div>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
