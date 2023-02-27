@@ -674,6 +674,10 @@
                 document.getElementById("updateAllConfig").style.background = "#1E90FF";
                 document.getElementById("updateAllConfig").disabled = false;
             }
+
+            diffDeviceNum = 0;
+            totalDiffDeviceCount(dataDevice);
+            htmlContentList(dataDevice);
         }
 
         function totalDiffDeviceCount(data){
@@ -703,6 +707,9 @@
             var contentList = document.getElementById("contentList");
             var maxElectric = document.getElementById("maxElectric");
             var type = getTypeRadio();
+            var subType = getSubTypeCheckbox();
+            var subTypeStr = subType.join();
+
             for(var i = 0; i < data.length; i++){
                 html = '<div class="content-class content-list-block-class width80P bg-f5" style="position: relative;margin-bottom: 10px">';
                 html += '       <div style="margin: 0px 10px;width: 70%" class="pull-left">';
@@ -712,18 +719,62 @@
                 html += '               </div>';
                 html += '           </div>';
                 if (data[i]['params']){
-                    if (maxElectric.value == data[i]['params']['缺省选择最大电流'] && type == data[i]['params']['灯光模型']){
+                    if (subType.length == 0){
                         html += '           <div class="color-green font-sizeMinirem2">';
                         html += '               <span>'+data[i]['params']['缺省选择最大电流']+'</span>毫安';
                         html += '               |';
                         html += '               <span>'+data[i]['params']['灯光模型']+'</span>';
                         html += '           </div>';
                     }else {
-                        html += '           <div class="color-red font-sizeMinirem2">';
-                        html += '               <span>'+data[i]['params']['缺省选择最大电流']+'</span>毫安';
-                        html += '               |';
-                        html += '               <span>'+data[i]['params']['灯光模型']+'</span>';
-                        html += '           </div>';
+                        if (subTypeStr.indexOf("dianliu") > -1){
+                            if (maxElectric.value == data[i]['params']['缺省选择最大电流']){
+                                html += '           <div class="color-green font-sizeMinirem2">';
+                                html += '               <span>'+data[i]['params']['缺省选择最大电流']+'</span>毫安';
+                                html += '               |';
+                                html += '               <span>'+data[i]['params']['灯光模型']+'</span>';
+                                html += '           </div>';
+                            }else {
+                                html += '           <div class="color-red font-sizeMinirem2">';
+                                html += '               <span>'+data[i]['params']['缺省选择最大电流']+'</span>毫安';
+                                html += '               |';
+                                html += '               <span>'+data[i]['params']['灯光模型']+'</span>';
+                                html += '           </div>';
+                            }
+                        }else if (subTypeStr.indexOf("moxing") > -1){
+                            if (type == data[i]['params']['灯光模型']){
+                                html += '           <div class="color-green font-sizeMinirem2">';
+                                html += '               <span>'+data[i]['params']['缺省选择最大电流']+'</span>毫安';
+                                html += '               |';
+                                html += '               <span>'+data[i]['params']['灯光模型']+'</span>';
+                                html += '           </div>';
+                            }else {
+                                html += '           <div class="color-red font-sizeMinirem2">';
+                                html += '               <span>'+data[i]['params']['缺省选择最大电流']+'</span>毫安';
+                                html += '               |';
+                                html += '               <span>'+data[i]['params']['灯光模型']+'</span>';
+                                html += '           </div>';
+                            }
+                        }else if (subTypeStr.indexOf("dianliu") > -1 &&subTypeStr.indexOf("moxing") > -1){
+                            if (type == data[i]['params']['灯光模型'] && type == data[i]['params']['缺省选择最大电流']){
+                                html += '           <div class="color-green font-sizeMinirem2">';
+                                html += '               <span>'+data[i]['params']['缺省选择最大电流']+'</span>毫安';
+                                html += '               |';
+                                html += '               <span>'+data[i]['params']['灯光模型']+'</span>';
+                                html += '           </div>';
+                            }else {
+                                html += '           <div class="color-red font-sizeMinirem2">';
+                                html += '               <span>'+data[i]['params']['缺省选择最大电流']+'</span>毫安';
+                                html += '               |';
+                                html += '               <span>'+data[i]['params']['灯光模型']+'</span>';
+                                html += '           </div>';
+                            }
+                        }else {
+                            html += '           <div class="color-red font-sizeMinirem2">';
+                            html += '               <span>'+data[i]['params']['缺省选择最大电流']+'</span>毫安';
+                            html += '               |';
+                            html += '               <span>'+data[i]['params']['灯光模型']+'</span>';
+                            html += '           </div>';
+                        }
                     }
                 }else {
                     html += '           <div class="color-warning font-sizeMinirem2">';
@@ -737,10 +788,24 @@
                 if (data[i]['params']) {
                     html += '               <button type="button" class="custom-normal-button" onclick="searchBtn(\'' + data[i]["sn"] + '\')">查找</button>';
 
-                    if (maxElectric.value == data[i]['params']['缺省选择最大电流'] && type == data[i]['params']['灯光模型']) {
-                        html += '               <button id="updateBtn" type="button" class="custom-disabled-button">修改</button>';
-                    } else {
-                        html += '               <button id="updateBtn" type="button" class="custom-success-button" onclick="updateBtn(\'' + data[i]["sn"] + '\')">修改</button>';
+                    if (subTypeStr.indexOf("dianliu") > -1){
+                        if (maxElectric.value == data[i]['params']['缺省选择最大电流']) {
+                            html += '               <button id="updateBtn" type="button" class="custom-disabled-button">修改</button>';
+                        } else {
+                            html += '               <button id="updateBtn" type="button" class="custom-success-button" onclick="updateBtn(\'' + data[i]["sn"] + '\')">修改</button>';
+                        }
+                    }else if (subTypeStr.indexOf("moxing") > -1){
+                        if (type == data[i]['params']['灯光模型']) {
+                            html += '               <button id="updateBtn" type="button" class="custom-disabled-button">修改</button>';
+                        } else {
+                            html += '               <button id="updateBtn" type="button" class="custom-success-button" onclick="updateBtn(\'' + data[i]["sn"] + '\')">修改</button>';
+                        }
+                    }else if (subTypeStr.indexOf("dianliu") > -1 && subTypeStr.indexOf("moxing") > -1){
+                        if (maxElectric.value == data[i]['params']['缺省选择最大电流'] && type == data[i]['params']['灯光模型']) {
+                            html += '               <button id="updateBtn" type="button" class="custom-disabled-button">修改</button>';
+                        } else {
+                            html += '               <button id="updateBtn" type="button" class="custom-success-button" onclick="updateBtn(\'' + data[i]["sn"] + '\')">修改</button>';
+                        }
                     }
                 }else {
                     html += '';

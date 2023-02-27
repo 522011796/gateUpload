@@ -294,17 +294,97 @@
             border-radius: 50%;
             animation: rotate 1000ms infinite linear;
         }
+        .custom-green-button { /* 按钮美化 */
+            /*width: 270px; !* 宽度 *!*/
+            height: 35px; /* 高度 */
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 2px; /* 边框半径 */
+            background: #67C23A; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: white; /* 字体颜色 */
+            font-size: 12px; /* 字体大小 */
+            padding:0px 6px;
+        }
 
         @keyframes rotate {
             to {  transform: rotate(1turn) }
         }
     </style>
     <script type="text/javascript">
+        var htmlStr = "";
+        var status = "";
+        var paramsArray = [];
+        var timer = null;
+        onload = function () {
+            getIndexParams();
+        }
+
+        function getIndexParams(){
+            var url =  "/page_params";
+            var xhr = new XMLHttpRequest();  // XMLHttpRequest 对象
+            xhr.open("post", url, true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。
+            xhr.onerror =  uploadFailed; //请求失败
+            var form = new FormData(); // FormData 对象
+            var obj = {"page": "index"}
+            form.append("params", JSON.stringify(obj));
+
+            var oem = document.getElementById("oem");
+            var light = document.getElementById("light");
+
+            // var testObj = { "menu": [ "oem", "light" ] };
+            // var testData = testObj['menu'] ? testObj['menu'] : [];
+            //
+            // for(var i = 0; i < testData.length; i++){
+            //     if (testData[i] == "oem"){
+            //         oem.style.display = "block";
+            //         oem.style.cssText = "margin-bottom:20px";
+            //     }else if (testData[i] == "light"){
+            //         light.style.display = "block";
+            //         light.style.cssText = "margin-bottom:20px";
+            //     }
+            // }
+
+            xhr.onreadystatechange = function() {//Call a function when the state changes.
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    console.log(data);
+                    var menu = data['menu'] ? data['menu'] : [];
+                    if (menu.length > 0){
+                        for(var i = 0; i < menu.length; i++){
+                            if (menu[i] == "oem"){
+                                oem.display = "block";
+                                oem.style.cssText = "margin-bottom:20px";
+                            }else if (menu[i] == "light"){
+                                light.display = "block";
+                                light.style.cssText = "margin-bottom:20px";
+                            }
+                        }
+                    }
+                }
+            }
+
+            xhr.send(form);
+        }
+
+        //取消
+        function cancleUploadFile(){
+            xhr.abort();
+        }
+
+        function uploadFailed(evt,state, desc) {
+            console.log("请求接口错误");
+        }
+
         function jumpLight(){
             window.location.href = "light.html";
         }
         function jumpUpgrade(){
             window.location.href = "upgrade.html";
+        }
+        function jumpOem(){
+            window.location.href = "oem.html";
         }
     </script>
 </head>
@@ -343,11 +423,14 @@
                     <span style="font-size: 14px;color: #888">选择页面</span>
                 </div>
                 <div class="font-sizeMinirem info-block-class">
-                    <div class="padding-full-1rem">
-                        <div>
+                    <div class="padding-full-1rem" id="menuList">
+                        <div id="oem" style="display: none">
+                            <button type="button" class="custom-green-button" onclick="jumpOem()" style="width: 100%">OEM参数修改</button>
+                        </div>
+                        <div id="light" style="display: none">
                             <button type="button" class="custom-normal-button" onclick="jumpLight()" style="width: 100%">灯参数修改</button>
                         </div>
-                        <div class="marginTop20">
+                        <div>
                             <button type="button" class="custom-success-button" onclick="jumpUpgrade()" style="width: 100%">系统升级</button>
                         </div>
                     </div>

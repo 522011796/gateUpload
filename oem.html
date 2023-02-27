@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <style>
+        .title-class{
+            font-size: 30px;
+            font-weight: bold;
+            width: 100%;
+            margin: 0 auto;
+            height: 50px;
+            line-height: 50px;
+        }
+        .content-class{
+            margin-top: 40px;
+        }
+        .content-block-class{
+            background: #f8f8f8;
+            border-radius: 5px;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            padding:15px 0px;
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 40px;
+            /*border: 0.15rem dashed #dddddd;*/
+            border-top: 0.12rem dashed #dddddd;
+        }
+        .info-block-class{
+            background: #f8f8f8;
+            border-radius: 5px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+            padding:0rem 0px;
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+        .pull-left{
+            float: left;
+        }
+        .pull-right{
+            float: right;
+        }
+        .clearFix{
+            clear: both;
+        }
+        .textCenter{
+            text-align: center;
+        }
+        .textLeft{
+            text-align: left;
+        }
+        .textRight{
+            text-align: right;
+        }
+        .color-555{
+            color:#555555
+        }
+        .color-888{
+            color:#888888
+        }
+        .color-999{
+            color:#999999
+        }
+        .color-red{
+            color:#f00
+        }
+        .color-warning{
+            color:#E6A23C;
+        }
+        .custom-button { /* 按钮美化 */
+            /*width: 270px; !* 宽度 *!*/
+            height: 40px; /* 高度 */
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 2px; /* 边框半径 */
+            background: #1E90FF; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: white; /* 字体颜色 */
+            font-size: 12px; /* 字体大小 */
+            padding:3px 10px;
+            width: 100%;
+        }
+        .custom-button:hover { /* 鼠标移入按钮范围时改变颜色 */
+            background: #5599FF;
+        }
+        .marginTop10{
+            margin-top: 10px;
+        }
+        .marginTop20{
+            margin-top: 20px;
+        }
+        .marginLeft20{
+            margin-left: 20px;
+        }
+        .padding-lr-10{
+            padding: 0px 10px;
+        }
+        .padding-tb-10{
+            padding: 10px 0px;
+        }
+        .padding-full-1rem{
+            padding: 10px 15px;
+        }
+        .font-size12{
+            font-size: 12px;
+        }
+        .font-size14{
+            font-size: 14px;
+        }
+        .font-size16{
+            font-size: 16px;
+        }
+        .font-sizeMinirem3{
+            font-size: 12px;
+        }
+        .font-sizeMinirem2{
+            font-size: 12px;
+        }
+        .font-sizeMinirem{
+            font-size: 12px;
+        }
+        .font-sizeSmallrem{
+            font-size: 12px;
+        }
+        .width80P{
+            width: 95%;
+        }
+        label{
+            position: relative;
+        }
+        #file{
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+        #btn{
+            margin-right: 5px;
+            background: cornflowerblue;
+            border: 0px;
+            color: #ffffff;
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius:  5px;
+        }
+        #text{
+            color: black;
+        }
+        .returnBtn{
+            background: none;
+            border: none;
+            padding: 5px 5px;
+            font-weight: bold;
+            color: #999;
+            font-size: 15px;
+        }
+        .input-class{
+            position: relative;
+            top: 0px;
+            width: 100px;
+            height: 25px;
+            border: 1px solid #cccccc;
+            border-radius: 2px;
+            color: #666666;
+            background: #FFFFFF;
+            padding:0px 5px;
+        }
+        .h-line{
+            height: 1px;
+            width: 100%;
+            border-bottom: 1px dashed #dddddd;
+            margin: 5px 0px;
+        }
+        .content-class{
+            margin-top: 40px;
+        }
+        .content-list-block-class{
+            border-radius: 5px;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            padding:10px 0px;
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 5px;
+            background: #f8f8f8;
+            /*border: 0.15rem dashed #dddddd;*/
+            /*border-bottom: 0.12rem dashed #dddddd;*/
+        }
+        .content-block-class{
+            background: #f8f8f8;
+            border-radius: 5px;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            padding:15px 0px;
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 40px;
+            /*border: 0.15rem dashed #dddddd;*/
+            border-top: 0.5rem dashed #dddddd;
+        }
+        .info-block-class{
+            background: #f8f8f8;
+            border-radius: 5px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+            padding:0px 0px;
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+        .pull-left{
+            float: left;
+        }
+        .pull-right{
+            float: right;
+        }
+
+        .toast-class{
+            position: absolute;
+            background: rgba(0,0,0,1);
+            width: 7rem;
+            padding: 1rem 1.2rem;
+            top:25%;
+            left:50%;
+            margin-left:-3.5rem;
+            z-index: 99;
+            display: none;
+        }
+        .loading-class{
+            position: absolute;
+            background: rgba(0,0,0,0.05);
+            top:0%;
+            left:0%;
+            z-index: 99;
+            height: 100%;
+            width: 100%;
+            display: none;
+        }
+        .loading__anim {
+            width: 35px;
+            height: 35px;
+            display: inline-block;
+            border: 5px solid rgba(189,189,189 ,0.25);
+            border-left-color: rgba(3,155,229 ,1);
+            border-top-color: rgba(3,155,229 ,1);
+            border-radius: 50%;
+            animation: rotate 1000ms infinite linear;
+        }
+        .color-555{
+            color:#555555
+        }
+        .color-888{
+            color:#888888
+        }
+        .color-999{
+            color:#999999
+        }
+        .color-red{
+            color:#f00
+        }
+        .color-green{
+            color:#67C23A;
+        }
+        .color-warning{
+            color:#E6A23C;
+        }
+        .custom-success-button { /* 按钮美化 */
+            /*width: 270px; !* 宽度 *!*/
+            height: 35px; /* 高度 */
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 2px; /* 边框半径 */
+            background: #1E90FF; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: white; /* 字体颜色 */
+            font-size: 12px; /* 字体大小 */
+            padding:0px 6px;
+        }
+        .custom-disabled-button{
+            /*width: 270px; !* 宽度 *!*/
+            height: 35px; /* 高度 */
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 2px; /* 边框半径 */
+            background: #dddddd; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: #888; /* 字体颜色 */
+            font-size: 12px; /* 字体大小 */
+            padding:0px 6px;
+        }
+        .custom-refersh-button{
+            /*width: 270px; !* 宽度 *!*/
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 2px; /* 边框半径 */
+            background: #E6A23C; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: white; /* 字体颜色 */
+            font-size: 12px; /* 字体大小 */
+            padding:2px 5px;
+        }
+        .custom-normal-button { /* 按钮美化 */
+            /*width: 270px; !* 宽度 *!*/
+            height: 35px; /* 高度 */
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 2px; /* 边框半径 */
+            background: #E6A23C; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: white; /* 字体颜色 */
+            font-size: 12px; /* 字体大小 */
+            padding:0px 6px;
+        }
+        @keyframes rotate {
+            to {  transform: rotate(1turn) }
+        }
+    </style>
+    <script type="text/javascript">
+        var changeshangArray = [];
+        var typeArray = [];
+        var objData = {};
+        var changshangIndex = 0;
+        var typeIndex = 0;
+        var modelIndex = 0;
+        var timer = null;
+        var htmlStr = "";
+        var dataDevice = [];
+        var diffDeviceNum = 0;
+        var toogleStatus = false;
+        var num = 0;
+
+        onload = function () {
+            getChangshangParams();
+            loopScan();
+            //test();
+        }
+
+        function getChangshangParams(){
+            var url =  "/page_params";
+            var xhr = new XMLHttpRequest();  // XMLHttpRequest 对象
+            xhr.open("post", url, true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。
+            xhr.onerror =  uploadFailed; //请求失败
+            var form = new FormData(); // FormData 对象
+            var obj = {"page": "oem"}
+            form.append("params", JSON.stringify(obj));
+
+            var changshangId = document.getElementById("changshangId");
+            var typeId = document.getElementById("typeId");
+            var modelId = document.getElementById("modelId");
+            var changshangOption = '';
+            var modelOption = '';
+            var typeOption = '';
+
+            // var testObj = {  "产品类型": [ "灯光", "窗帘" ], "厂商名称": [ "netmoon", "Sufn" ],"产品型号" : [ [ [ "ILight-X1" ], [ "IEC-4", "IEC-5" ]],  [ [ "ILight-X11" ], [ "SIEC1", "SIEC2" ] ] ] };
+            // objData = testObj;
+            // var changshangArray = testObj['厂商名称'] ? testObj['厂商名称'] : [];
+            // var typeArray = testObj['产品类型'] ? testObj['产品类型'] : [];
+            // var modelArray = [];
+            //
+            // typeOption = getTypeArray(typeArray);
+            // changshangOption = getChangshangArray(changshangArray);
+            // modelOption = getModelArray(modelArray);
+            //
+            // typeId.innerHTML = typeOption;
+            // changshangId.innerHTML = changshangOption;
+            // modelId.innerHTML = modelOption;
+
+            xhr.onreadystatechange = function() {//Call a function when the state changes.
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    console.log(data);
+                    objData = data;
+                    var changshangArray = data['厂商名称'] ? data['厂商名称'] : [];
+                    var typeArray = data['产品类型'] ? data['产品类型'] : [];
+                    var modelArray = [];
+
+                    typeOption = getTypeArray(typeArray);
+                    changshangOption = getChangshangArray(changshangArray);
+                    modelOption = getModelArray(modelArray);
+
+                    typeId.innerHTML = typeOption;
+                    changshangId.innerHTML = changshangOption;
+                    modelId.innerHTML = modelOption;
+                }
+            }
+
+            xhr.send(form);
+        }
+
+        function loopScan(){
+            clearInterval(timer);
+            showLoading();
+            getDeviceListScan();
+        }
+
+        function showLoading(){
+            var loadId = document.getElementById("loadId");
+            loadId.style.display = "block";
+        }
+
+        function hideLoading(){
+            var loadId = document.getElementById("loadId");
+            loadId.style.display = "none";
+        }
+
+
+        function getDeviceListScan(){
+            var url =  "/devices_scan";
+            var xhr = new XMLHttpRequest();  // XMLHttpRequest 对象
+            xhr.open("post", url, true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。
+            var form = new FormData(); // FormData 对象
+            form.append("devType", 0);
+
+            xhr.send(form);
+
+            console.log("scan");
+            //clearInterval(timer);
+            diffDeviceNum = 0;
+            document.getElementById("contentList").innerHTML = "";
+            document.getElementById("totalDevice").innerText = "0";
+            document.getElementById("diffDevice").innerText = "0";
+            timer = setInterval(function (){
+                getDeviceList();
+            },1000);
+        }
+
+        function getDeviceList(){
+            var maxElectric = document.getElementById("maxElectric");
+            var contentList = document.getElementById("contentList");
+            var totalDevice = document.getElementById("totalDevice");
+            contentList.style.height = window.screen.height - 340 + "px";
+            //console.log(window.screen.height);
+
+            var url =  "/devices_list";
+            var xhr = new XMLHttpRequest(); // XMLHttpRequest 对象
+            var params = '';
+            var form = new FormData(); // FormData 对象
+            form.append("devType", "0");
+            xhr.open("get", url, true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。
+            xhr.onerror =  uploadFailed; //请求失败
+            console.log("循环中....");
+            xhr.onreadystatechange = function() {//Call a function when the state changes.
+                console.log("state--"+ xhr.readyState, xhr.status);
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    console.log(data);
+                    htmlStr = "";
+                    if(data.state == 1) {
+                        clearInterval(timer);
+                        num = 0;
+                        hideLoading();
+                        document.getElementById("refershBtn").disabled = false;
+                        document.getElementById("refershBtn").style.background = "#E6A23C";
+                        if (data.devices && data.devices.length > 0){
+                            dataDevice = data.devices;
+                            totalDevice.innerText = data.devices.length;
+                            totalDiffDeviceCount(data.devices);
+                            htmlContentList(data.devices);
+                        }
+                    }else {
+                        if (data.devices && data.devices.length > 0){
+                            dataDevice = data.devices;
+                            totalDevice.innerText = data.devices.length;
+                            htmlContentList(data.devices);
+                        }
+                    }
+                }
+            }
+            xhr.send(form);
+            num++;
+        }
+
+
+        function totalDiffDeviceCount(data){
+            var diffDevice = document.getElementById("diffDevice");
+            var maxElectric =document.getElementById("maxElectric");
+            //var type = getTypeRadio();
+            diffDeviceNum = 0;
+            diffDevice.innerText = "0";
+            var changshangId =document.getElementById("changshangId");
+            var typeId =document.getElementById("typeId");
+            var modelId =document.getElementById("modelId");
+
+            var changshangIndex = changshangId.selectedIndex;
+            var changshangValue = changshangId.options[changshangIndex].value;
+
+            var typeIndex = typeId.selectedIndex;
+            var typeValue = typeId.options[typeIndex].value;
+
+            var modelIndex = modelId.selectedIndex;
+            var modelValue = modelId.options[modelIndex].value;
+            for(var i = 0; i < data.length; i++){
+                if (data[i]['params']){
+                    if (changshangValue == data[i]['params']['厂商'] && typeValue == data[i]['params']['型号']){
+
+                    }else {
+                        diffDeviceNum++;
+                    }
+                }else {
+                    diffDeviceNum++;
+                }
+            }
+            diffDevice.innerText = diffDeviceNum;
+        }
+
+        function htmlContentList(data){
+            var html = "";
+            htmlStr = "";
+            var contentList = document.getElementById("contentList");
+            var changshangId =document.getElementById("changshangId");
+            var typeId =document.getElementById("typeId");
+            var modelId =document.getElementById("modelId");
+
+            var changshangIndex = changshangId.selectedIndex;
+            var changshangValue = changshangId.options[changshangIndex].value;
+
+            var typeIndex = typeId.selectedIndex;
+            var typeValue = typeId.options[typeIndex].value;
+
+            var modelIndex = modelId.selectedIndex;
+            var modelValue = modelId.options[modelIndex].value;
+
+            for(var i = 0; i < data.length; i++){
+                if (typeValue == ""){
+                    html = htmlCommonStr(data[i], changshangValue, modelValue);
+                }else if (typeValue == data[i]['devType']){
+                    // html = '<div class="content-class content-list-block-class width80P bg-f5" style="position: relative;margin-bottom: 10px">';
+                    // html += '       <div style="margin: 0px 10px;width: 70%" class="pull-left">';
+                    // html += '           <div style="position: relative">';
+                    // html += '               <div>';
+                    // html += '                   <span class="color-555 font-sizeMinirem">'+data[i]['sn']+'</span>';
+                    // html += '               </div>';
+                    // html += '           </div>';
+                    // if (data[i]['params']){
+                    //     if (changshangValue == data[i]['params']['厂商'] && modelValue == data[i]['params']['型号']){
+                    //         html += '           <div class="color-green font-sizeMinirem2">';
+                    //         html += '               <span>'+data[i]['params']['厂商']+'</span>';
+                    //         html += '               |';
+                    //         html += '               <span>'+data[i]['params']['型号']+'</span>';
+                    //         html += '           </div>';
+                    //     }else {
+                    //         html += '           <div class="color-red font-sizeMinirem2">';
+                    //         html += '               <span>'+data[i]['params']['厂商']+'</span>';
+                    //         html += '               |';
+                    //         html += '               <span>'+data[i]['params']['型号']+'</span>';
+                    //         html += '           </div>';
+                    //     }
+                    // }else {
+                    //     html += '           <div class="color-warning font-sizeMinirem2">';
+                    //     html += '               <span>暂未获取到设备参数</span>';
+                    //     html += '           </div>';
+                    // }
+                    //
+                    // html += '       </div>';
+                    // html += '       <div style="margin-left: 70%; text-align: center;position: relative">';
+                    // html += '           <div style="position: relative; top: 5px">';
+                    // if (data[i]['params']) {
+                    //     html += '               <button type="button" class="custom-normal-button" onclick="searchBtn(\'' + data[i]["sn"] + '\')">查找</button>';
+                    //
+                    //     if (changshangValue == data[i]['params']['厂商'] && modelValue == data[i]['params']['型号']) {
+                    //         html += '               <button id="updateBtn" type="button" class="custom-disabled-button">修改</button>';
+                    //     } else {
+                    //         html += '               <button id="updateBtn" type="button" class="custom-success-button" onclick="updateBtn(\'' + data[i]["sn"] + '\')">修改</button>';
+                    //     }
+                    // }else {
+                    //     html += '';
+                    // }
+                    //
+                    // html += '           </div>';
+                    // html += '       </div>';
+                    // html += '       <div class="clearFix"></div>';
+                    // html += '   </div>';
+
+                    html = htmlCommonStr(data[i], changshangValue, modelValue);
+                }
+
+                htmlStr += html;
+            }
+            contentList.innerHTML = htmlStr;
+        }
+
+        function htmlCommonStr(data, changshangValue,modelValue){
+            var html = "";
+            html = '<div class="content-class content-list-block-class width80P bg-f5" style="position: relative;margin-bottom: 10px">';
+            html += '       <div style="margin: 0px 10px;width: 60%" class="pull-left">';
+            html += '           <div style="position: relative">';
+            html += '               <div>';
+            html += '                   <span class="color-555 font-sizeMinirem">'+data['sn']+'</span>';
+            html += '               </div>';
+            html += '           </div>';
+            if (data['params']){
+                if (changshangValue == '' && modelValue == ''){
+                    html += '           <div class="color-green font-sizeMinirem2">';
+                    html += '               <span>'+data['params']['厂商']+'</span>';
+                    html += '               |';
+                    html += '               <span>'+data['params']['型号']+'</span>';
+                    html += '           </div>';
+                }else if(changshangValue != '' && modelValue == ''){
+                    if (changshangValue != data['params']['厂商']){
+                        html += '           <div class="color-red font-sizeMinirem2">';
+                        html += '               <span>'+data['params']['厂商']+'</span>';
+                        html += '               |';
+                        html += '               <span>'+data['params']['型号']+'</span>';
+                        html += '           </div>';
+                    }else {
+                        html += '           <div class="color-green font-sizeMinirem2">';
+                        html += '               <span>'+data['params']['厂商']+'</span>';
+                        html += '               |';
+                        html += '               <span>'+data['params']['型号']+'</span>';
+                        html += '           </div>';
+                    }
+                }else if(changshangValue == '' && modelValue != ''){
+                    if (modelValue != data['params']['型号']){
+                        html += '           <div class="color-red font-sizeMinirem2">';
+                        html += '               <span>'+data['params']['厂商']+'</span>';
+                        html += '               |';
+                        html += '               <span>'+data['params']['型号']+'</span>';
+                        html += '           </div>';
+                    }else {
+                        html += '           <div class="color-green font-sizeMinirem2">';
+                        html += '               <span>'+data['params']['厂商']+'</span>';
+                        html += '               |';
+                        html += '               <span>'+data['params']['型号']+'</span>';
+                        html += '           </div>';
+                    }
+                }else if(changshangValue != '' && modelValue != ''){
+                    if (changshangValue != data['params']['厂商'] && modelValue != data['params']['型号']){
+                        html += '           <div class="color-red font-sizeMinirem2">';
+                        html += '               <span>'+data['params']['厂商']+'</span>';
+                        html += '               |';
+                        html += '               <span>'+data['params']['型号']+'</span>';
+                        html += '           </div>';
+                    }else if (changshangValue != data['params']['厂商'] && modelValue == data['params']['型号']){
+                        html += '           <div class="color-red font-sizeMinirem2">';
+                        html += '               <span>'+data['params']['厂商']+'</span>';
+                        html += '               |';
+                        html += '               <span>'+data['params']['型号']+'</span>';
+                        html += '           </div>';
+                    }else if (changshangValue == data['params']['厂商'] && modelValue != data['params']['型号']){
+                        html += '           <div class="color-red font-sizeMinirem2">';
+                        html += '               <span>'+data['params']['厂商']+'</span>';
+                        html += '               |';
+                        html += '               <span>'+data['params']['型号']+'</span>';
+                        html += '           </div>';
+                    }else {
+                        html += '           <div class="color-green font-sizeMinirem2">';
+                        html += '               <span>'+data['params']['厂商']+'</span>';
+                        html += '               |';
+                        html += '               <span>'+data['params']['型号']+'</span>';
+                        html += '           </div>';
+                    }
+                }
+            }else {
+                html += '           <div class="color-warning font-sizeMinirem2">';
+                html += '               <span>暂未获取到设备参数</span>';
+                html += '           </div>';
+            }
+
+            html += '       </div>';
+            html += '       <div style="margin-left: 60%; text-align: center;position: relative">';
+            html += '           <div style="position: relative; top: 5px">';
+            if (data['params']) {
+                html += '               <button type="button" class="custom-normal-button" onclick="searchBtn(\'' + data["sn"] + '\')">查找</button>';
+
+                if (changshangValue == data['params']['厂商'] && modelValue == ""){
+                    html += '               <button id="updateBtn" type="button" class="custom-disabled-button">修改</button>';
+                }else if (changshangValue == "" && modelValue == data['params']['型号']){
+                    html += '               <button id="updateBtn" type="button" class="custom-disabled-button">修改</button>';
+                }else if (changshangValue == data['params']['厂商'] && modelValue == data['params']['型号']){
+                    html += '               <button id="updateBtn" type="button" class="custom-disabled-button">修改</button>';
+                }else {
+                    html += '               <button id="updateBtn" type="button" class="custom-success-button" onclick="updateBtn(\'' + data["sn"] + '\')">修改</button>';
+                }
+            }else {
+                html += '';
+            }
+
+            html += '           </div>';
+            html += '       </div>';
+            html += '       <div class="clearFix"></div>';
+            html += '   </div>';
+
+            return html;
+        }
+
+        function getChangshangArray(array){
+            var changshangOption = '<option value="" >请选择</option>';
+
+            for(var i = 0; i < array.length; i++){
+                changshangOption += '<option value="'+array[i]+'" >'+array[i]+'</option>'
+            }
+            // changshangOption += '<option value="-1" >自定义</option>';
+
+            return changshangOption;
+        }
+
+        function getTypeArray(array){
+            var modelOption = '<option value="" >请选择</option>';
+
+            for(var i = 0; i < array.length; i++){
+                modelOption += '<option value="'+array[i]+'" >'+array[i]+'</option>'
+            }
+
+            return modelOption;
+        }
+
+        function getModelArray(array){
+            var modelOption = '<option value="" >请选择</option>';
+
+            for(var i = 0; i < array.length; i++){
+                modelOption += '<option value="'+array[i]+'" >'+array[i]+'</option>'
+            }
+
+            return modelOption;
+        }
+
+        function uploadFailed(evt,state, desc) {
+            console.log("请求接口错误");
+        }
+
+        function changeType(value){
+            var changshangIndex = document.getElementById("changshangId").selectedIndex;
+            typeIndex = document.getElementById("typeId").selectedIndex;
+            var modelArray = objData['产品型号'] ? objData['产品型号'] : [];
+            var changshangArray = objData['厂商名称'] ? objData['厂商名称'] : [];
+
+            if (modelArray.length > 0 && changshangIndex <= changshangArray.length && changshangIndex != ""){
+                var modelTempArray = modelArray[changshangIndex - 1][typeIndex - 1];
+                var modelOption = getModelArray(modelTempArray);
+                document.getElementById("modelId").innerHTML = modelOption;
+            }
+
+            totalDiffDeviceCount(dataDevice);
+            htmlContentList(dataDevice);
+        }
+
+        function changeChangshang(value){
+            changshangIndex = document.getElementById("changshangId").selectedIndex;
+            var typeIndex = document.getElementById("typeId").selectedIndex;
+            var typeArray = objData['产品类型'] ? objData['产品类型'] : [];
+            var modelArray = objData['产品型号'] ? objData['产品型号'] : [];
+            var changshangArray = objData['厂商名称'] ? objData['厂商名称'] : [];
+
+            // var typeOption = getModelArray(typeArray);
+            // document.getElementById("typeId").innerHTML = typeOption;
+            document.getElementById("modelId").innerHTML = getModelArray([]);
+
+            if (modelArray.length > 0 && changshangIndex <= changshangArray.length && typeIndex != ""){
+                var modelTempArray = modelArray[changshangIndex - 1][typeIndex - 1];
+                var modelOption = getModelArray(modelTempArray);
+                document.getElementById("modelId").innerHTML = modelOption;
+            }
+
+            totalDiffDeviceCount(dataDevice);
+            htmlContentList(dataDevice);
+        }
+
+        function changeModel(value){
+            modelIndex = document.getElementById("modelId").selectedIndex;
+            //console.log(value, modelIndex);
+
+            totalDiffDeviceCount(dataDevice);
+            htmlContentList(dataDevice);
+        }
+
+        function toogle(type){
+            var toogleFalse = document.getElementById("toogleFalseId");
+            var toogleTrue = document.getElementById("toogleTrueId");
+            var toogleShowId = document.getElementById("toogleShowId");
+            var toogleShowBtnId = document.getElementById("toogleShowBtnId");
+            var contentList = document.getElementById("contentList");
+
+            if (type == false){
+                contentList.style.height = window.screen.height - 130 + "px";
+                toogleShowId.style.display = type == false ? "none" : "";
+                toogleShowBtnId.style.display = type == false ? "none" : "";
+                toogleFalse.style.display = "none";
+                toogleTrue.style.display = "inline";
+            }else if (type == true){
+                contentList.style.height = window.screen.height - 340 + "px";
+                toogleShowId.style.display = type == false ? "none" : "";
+                toogleShowBtnId.style.display = type == false ? "none" : "";
+                toogleFalse.style.display = "inline";
+                toogleTrue.style.display = "none";
+
+            }
+        }
+
+        function inputChange(){
+            totalDiffDeviceCount(dataDevice);
+            htmlContentList(dataDevice);
+        }
+
+        function returnPage(){
+            window.location.href = "index.html";
+        }
+
+        function refreshBtn(){
+            document.getElementById("refershBtn").disabled = true;
+            document.getElementById("refershBtn").style.background = "#cccccc";
+
+            loopScan();
+        }
+
+        function updateBtn(sn){
+            configLight(null,sn);
+        }
+
+        function searchBtn(sn){
+            console.log(sn);
+            var url =  "/device_identify"; // 接收上传文件的后台地址
+            var form = new FormData(); // FormData 对象
+            form.append("sn", sn);
+
+            var xhr = new XMLHttpRequest();  // XMLHttpRequest 对象
+            xhr.open("post", url, true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。
+
+            xhr.send(form); //开始上传，发送form数据
+        }
+
+        function test(){
+            htmlStr = "";
+            var contentList = document.getElementById("contentList");
+            var html = "";
+            for(var i = 0; i < 20; i++){
+                html = '<div class="content-class content-list-block-class width80P bg-f5" style="position: relative;margin-bottom: 10px">';
+                html += '       <div style="margin: 0px 10px;width: 60%" class="pull-left">';
+                html += '           <div style="position: relative">';
+                html += '               <div>';
+                html += '                   <span class="color-555 font-sizeMinirem">'+i+'</span>';
+                html += '               </div>';
+                html += '           </div>';
+
+                html += '           <div class="color-green font-sizeMinirem2">';
+                html += '               厂商:<span>'+i+'</span>';
+                html += '               |';
+                html += '               类型<span>'+i+'</span>';
+                html += '               |';
+                html += '               型号<span>'+i+'</span>';
+                html += '           </div>';
+
+                html += '       </div>';
+                html += '       <div style="margin-left: 60%; text-align: center;position: relative">';
+                html += '           <div style="position: relative; top: 5px">';
+                // html += '               <button type="button" class="custom-normal-button" onclick="searchBtn(\'' + i + '\')">查找</button>';
+
+                html += '               <button id="updateBtn" type="button" class="custom-success-button" onclick="updateBtn(\'' + i + '\')">修改</button>';
+
+                html += '           </div>';
+                html += '       </div>';
+                html += '       <div class="clearFix"></div>';
+                html += '   </div>';
+
+                htmlStr += html;
+            }
+            contentList.innerHTML = htmlStr;
+
+            contentList.style.height = window.screen.height - 340 + "px";
+            //console.log(window.screen.height);
+        }
+
+
+        function configLight(type, sn) {
+            //document.getElementById("errorTips").innerText = "";
+            var r = null;
+            var tips = "";
+            var changshangId =document.getElementById("changshangId");
+            var typeId =document.getElementById("typeId");
+            var modelId =document.getElementById("modelId");
+
+            var changshangIndex = changshangId.selectedIndex;
+            var changshangValue = changshangId.options[changshangIndex].value;
+
+            var typeIndex = typeId.selectedIndex;
+            var typeValue = typeId.options[typeIndex].value;
+
+            var modelIndex = modelId.selectedIndex;
+            var modelValue = modelId.options[modelIndex].value;
+            //console.log(type, changshangValue,typeValue,modelValue);
+
+            if (changshangValue == "" && modelValue == ""){
+                toast("请选择参数");
+                return;
+            }
+
+            if (type == "all"){
+                tips = "确定需要修改全部设备的参数？";
+            }else {
+                tips = "确定需要修改设备["+sn+"]的参数？";
+            }
+            r = confirm(tips);
+            if (r == false) {
+                return;
+            }
+
+            var url =  "/devices_modify"; // 接收上传文件的后台地址
+            var form = new FormData(); // FormData 对象
+            var dataObj = {};
+            dataObj = getSubParams(changshangValue, modelValue, sn);
+            console.log(JSON.stringify(dataObj));
+            form.append('arg',JSON.stringify(dataObj))
+
+            var xhr = new XMLHttpRequest();  // XMLHttpRequest 对象
+            xhr.open("post", url, true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。
+            xhr.onerror =  uploadFailed; //请求失败
+
+            xhr.onreadystatechange = function() {//Call a function when the state changes.
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    console.log(data);
+                    if (data.state == 0){
+                        loopManu(sn);
+                        toast("修改成功！");
+                    }else if (data.state == 2){
+                        loopManu(sn);
+                        toast("批量修改中，请稍后查看设备列表信息");
+                    }else {
+                        toast("修改失败，请稍后再试！");
+                    }
+                }
+            }
+
+            xhr.send(form); //开始上传，发送form数据
+        }
+
+        function loopManu(sn){
+            clearInterval(timer);
+            showLoading();
+            clearInterval(timer);
+            diffDeviceNum = 0;
+            document.getElementById("contentList").innerHTML = "";
+            document.getElementById("totalDevice").innerText = "0";
+            document.getElementById("diffDevice").innerText = "0";
+            timer = setInterval(function (){
+                getDeviceList();
+            },1000);
+        }
+
+        function getSubParams(changshang,model,sn){
+            var dataObj = {
+                'params': {}
+            };
+
+            if (changshang != ""){
+                dataObj['params']['厂商'] = changshang;
+            }
+            if (model != ""){
+                dataObj['params']['型号'] = model;
+            }
+
+            if (sn){
+                dataObj['sn'] = sn;
+            }
+            return dataObj;
+        }
+
+        function toast(toast){
+            var toastId = document.getElementById("toastId");
+            document.getElementById("toastStrId").innerText = toast;
+            toastId.style.display = "block";
+            setTimeout(function (){
+                toastId.style.display = "none";
+                document.getElementById("toastStrId").innerText = "";
+            },1800);
+        }
+    </script>
+</head>
+<body>
+    <div class="toast-class" id="toastId">
+        <div style="width: 100%;text-align: center;color: #ffffff;font-size: 12px">
+            <span id="toastStrId"></span>
+        </div>
+    </div>
+
+    <div class="loading-class" id="loadId">
+        <div style="width: 100%;position: relative;text-align: center;color: #67C23A;font-size: 18px;font-weight: bold;top: 50%">
+            <div class="loading__anim"></div>
+            <div>loading...</div>
+        </div>
+    </div>
+    <div>
+        <div class="title-class">
+            <div id="backId" class="pull-left" style="width: 15%;font-size: 14px;cursor: default;height: 100%">
+                <button type="button" class="color-555 returnBtn" id="returnId" onclick="returnPage()">
+                    &lt;返回
+                </button>
+                <span>&nbsp;</span>
+            </div>
+            <div class="pull-left textCenter" style="width: 70%">
+                <span>OEM参数修改</span>
+            </div>
+            <div class="pull-left" style="width: 15%">
+                <span>&nbsp;</span>
+            </div>
+            <div class="clearFix"></div>
+        </div>
+
+        <div style="margin-top: 5%;">
+            <div class="width80P" style="margin: 0 auto;">
+                <div class="color-555 font-sizeMinirem font-bold">
+                    <span>参数设置</span>
+                    <span style="position: relative">
+                        <a href="javascript:;" id="toogleFalseId" onclick="toogle(false)" style="display: inline;width: 50px"> 折叠设置</a>
+                        <a href="javascript:;" id="toogleTrueId" onclick="toogle(true)" style="display: none;width: 50px"> 展开设置</a>
+                    </span>
+                </div>
+                <div class="font-sizeMinirem info-block-class" id="toogleShowId">
+                    <div class="padding-full-1rem">
+                        <div>
+                            <div>
+                                <div>
+                                    <label>
+                                        <span class="color-555">产品类型: </span>
+                                    </label>
+                                    <span>
+                                        <select id="typeId" style="width: 120px;height:25px;border: 1px solid #dddddd" onchange="changeType(this.value)">
+
+                                        </select>
+                                        <input style="display: none" type="text" id="typeInput" value="" class="input-class" disabled onchange="inputChange()" oninput="inputChange()" onporpertychange="inputChange()">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="marginTop10">
+                            <div>
+                                <div>
+                                    <label>
+                                        <span class="color-555">厂商名称: </span>
+                                    </label>
+                                    <span>
+                                        <select id="changshangId" style="width: 120px;height:25px;border: 1px solid #dddddd" onchange="changeChangshang(this.value)">
+
+                                        </select>
+                                        <input style="display: none" type="text" id="changshangInput" value="" class="input-class" onchange="inputChange()" oninput="inputChange()" onporpertychange="inputChange()">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="marginTop10">
+                            <div>
+                                <label>
+                                    <span class="color-555">产品型号: </span>
+                                </label>
+                                <span>
+                                    <select id="modelId" style="width: 120px;height:25px;border: 1px solid #dddddd" onchange="changeModel(this.value)">
+
+                                    </select>
+                                    <input style="display: none" type="text" id="modelInput" value="" class="input-class" disabled onchange="inputChange()" oninput="inputChange()" onporpertychange="inputChange()">
+                                </span>
+                            </div>
+                            <div class="marginTop5">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="marginTop20" id="toogleShowBtnId">
+                    <button id="updateAllConfig" type="button" onclick="configLight('all', null)" class="custom-button">全部修改</button>
+                    <div class="marginTop2">
+                        <span class="color-red font-size12">如需单独修改某一设备参数，请点击列表中的"修改"按钮</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="h-line"></div>
+
+        <div style="margin-top: 10px;">
+            <div class="width80P" style="margin: 0 auto;">
+                <div class="color-555 font-sizeMinirem font-bold">
+                    <span>设备列表</span>
+                    <span class="marginLeft5 color-888">共</span>
+                    <span class="color-red" id="diffDevice">0</span>
+                    /
+                    <span class="color-888" id="totalDevice">0</span>
+                    <span class="color-888">台</span>
+
+                    <span class="marginLeft10">
+                        <button id="refershBtn" type="button" onclick="refreshBtn()" class="custom-refersh-button">刷新</button>
+                    </span>
+                </div>
+            </div>
+
+            <div id="contentList" style="overflow-y: auto;padding: 0px 10px;">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
